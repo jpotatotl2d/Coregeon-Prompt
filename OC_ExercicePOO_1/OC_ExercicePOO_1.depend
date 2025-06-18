@@ -1,0 +1,78 @@
+# depslib dependency file v1.0
+1750270390 source:c:\users\jordan (user)\documents\codeblocks\test\oc_exercicepoo_1\main.cpp
+	<iostream>
+	<string>
+	"Personnage.hpp"
+	"Level.hpp"
+	"UserInterface.hpp"
+	"LocalizationManager.hpp"
+	<ctime>
+	<map>
+	<vector>
+	<thread>
+	<chrono>
+	<windows.h>
+
+1750262809 c:\users\jordan (user)\documents\codeblocks\test\oc_exercicepoo_1\personnage.hpp
+	<iostream>
+	<string>
+	"Arme.hpp"
+	"Level.hpp"
+
+1750266971 source:c:\users\jordan (user)\documents\codeblocks\test\oc_exercicepoo_1\personnage.cpp
+	"Personnage.hpp"
+	"Level.hpp"
+	<cmath>
+	<ctime>
+	<thread>
+	<chrono>
+	"LocalizationManager.hpp"
+
+1750265415 c:\users\jordan (user)\documents\codeblocks\test\oc_exercicepoo_1\arme.hpp
+	<iostream>
+	<string>
+
+1750266726 source:c:\users\jordan (user)\documents\codeblocks\test\oc_exercicepoo_1\arme.cpp
+	"Arme.hpp"
+	"LocalizationManager.hpp"
+
+1750177869 source:c:\users\jordan (user)\documents\codeblocks\test\oc_exercicepoo_1\level.cpp
+	"Level.hpp"
+	"Personnage.hpp"
+	<string>
+	<iostream>
+	<cstdlib>
+	<map>
+	<limits>
+	"LocalizationManager.hpp"
+
+1750084697 c:\users\jordan (user)\documents\codeblocks\test\oc_exercicepoo_1\level.hpp
+	"Personnage.hpp"
+	"UserInterface.hpp"
+
+1750265800 source:c:\users\jordan (user)\documents\codeblocks\test\oc_exercicepoo_1\userinterface.cpp
+	"UserInterface.hpp"
+	"Personnage.hpp"
+	<vector>
+	<thread>
+	<chrono>
+	<windows.h>
+	<map>
+	"LocalizationManager.hpp"
+
+1750253320 c:\users\jordan (user)\documents\codeblocks\test\oc_exercicepoo_1\userinterface.hpp
+	<iostream>
+	<string>
+	<vector>
+	"Personnage.hpp"
+
+1750177956 source:c:\users\jordan (user)\documents\codeblocks\test\oc_exercicepoo_1\localizationmanager.cpp
+	"LocalizationManager.hpp"
+	<fstream>
+	<sstream>
+	<iostream>
+
+1750171219 c:\users\jordan (user)\documents\codeblocks\test\oc_exercicepoo_1\localizationmanager.hpp
+	<unordered_map>
+	<string>
+

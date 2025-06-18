@@ -1,0 +1,242 @@
+// ----------------------------------------------------------------------------------------------------------- DEFAULT KEYS :
+key_Yes=O
+key_No=N
+
+// ----------------------------------------------------------------------------------------------------------- MAIN MENU :
+str_MainMenu_TitleQuote=Imagine a world or.. just grind
+str_MainMenu_Selectors=Nouvelle partie (N) -- Options (O) -- Credits (C) -- Quitter (X)
+str_MainMenu_Selection=Choisissez (N/O/C/X) :
+str_MainMenu_Exit=Fermeture du programme, appuyez sur 'Entree'.
+str_MainMenu_CreateChar=Creer un personnage ?
+
+// ----------------------------------------------------------------------------------------------------------- STARTING GAME :
+str_Game_Start=Debut de Partie
+str_Game_SelectPath=Choisissez une direction: Avancer (Z), A droite (D), A gauche (Q)
+str_Game_SelectPath_F=Avance d'une case.
+str_Game_SelectPath_R=Tourne a droite.
+str_Game_SelectPath_L=Tourne a gauche.
+str_Game_SelectPath_S=prefere rester ici et explorer les environs...
+
+str_Game_EnemyAppear=Vous tombez nez a nez avec un
+str_Game_StartFight=Debut du combat
+str_Game_EndFight=Fin du combat
+str_Game_GameEnd=Fin de partie
+str_Game_SlctAutoFight=Activer le combat automatique ?
+str_Game_AutoFightErr=Entrée invalide, mode automatique sélectionné !
+str_Game_FightCharDefeated=a vaincu
+str_Game_NpcLevelUpTitle=Les ennemis gagnent tous
+str_Game_NpcLevelUpLvl=niveau(x) !
+str_Game_BossAppear=Un BOSS apparait
+str_Game_FightSelector=Sélectionnez...
+str_Game_FightSelectEntry=1 : Attaque physique | 2 : Attaque magique | 3 : Potion HP | 4 : Potion MP
+str_Game_FightSelectErr=Choix invalide. Tour perdu.
+
+// ----------------------------------------------------------------------------------------------------------- CHARACTER :
+str_Char_Earn=gagne
+str_Char_EarnOne=gagne 1 niveau
+str_Char_EarnLevel=Niveau
+str_Char_EarnLevels=Niveaux
+str_Char_EarnLevLvls=Niveau(x)
+str_Char_EarnXP=recoit
+
+str_Char_Inflict=inflige
+str_Char_DmgTo=degats a
+str_Char_DmgManaTo=degats de mana a
+
+str_Char_Status_Name=Nom    :
+str_Char_Status_Level=Niveau :
+str_Char_Status_Health=Vie    :
+str_Char_Status_Mana=Mana   :
+str_Char_Status_Player_Exp=Exp    :
+str_Char_Status_Player_Money=Argent :
+
+str_Char_Status_Npc_Exp=Exp+   :
+str_Char_Status_Npc_Money=Money+ :
+
+str_Char_Status_Wp=Arme   :
+str_Char_Status_WpDmg=Degats :
+
+str_Char_UsePotion_TypeMana=mana
+str_Char_UsePotion_TypeHealth=vie
+str_Char_UsePotion_HasNoMoreP=n'a plus de potions
+str_Char_UsePotion_HealWithP=se soigne avec Potion
+str_Char_UsePotion_PotionUseless=mais c'est inefficace.
+str_Char_UsePotion_UseMiddleP=utilise une potion moyenne de
+str_Char_UsePotion_UseLittleP=utilise une petite potion de
+str_Char_UsePotion_UseDropP=a fait tomber sa potion de
+str_Char_UsePotion_UseBreakP=et l'a brisée !
+str_Char_UsePotion_AndRestoreP=et recupere
+
+str_Char_HealthCritP=est en état critique et utilise une potion de vie !
+str_Char_ManaCritP=manque de mana et boit une potion magique !
+str_Char_MissAtk=rate son attaque !
+
+str_Char_StatsEnd_DefeatedNpc=Ennemis vaincus   :
+str_Char_StatsEnd_LevelsEarned=Niveaux gagnes    :
+str_Char_StatsEnd_TotalXp=Total XP pts      :
+str_Char_StatsEnd_TotalUsedHp=Potions HP used   :
+str_Char_StatsEnd_TotalUsedMp=Potions MP used   :
+str_Char_StatsEnd_PhyAtks=Atk physiques     :
+str_Char_StatsEnd_MagAtks=Atk magiques      :
+str_Char_StatsEnd_MissAtks=Atk manquees      :
+str_Char_StatsEnd_TotalMoney=Argent total      :
+str_Char_StatsEnd_TotalBrgt1Wp=Weapons brought   :
+str_Char_StatsEnd_VistdLvls=:Niveaux visites   :
+
+// ----------------------------------------------------------------------------------------------------------- NPCS ENEMIES :
+
+str_NpcEnemy_Sql=Squelette
+str_NpcEnemy_Ogr=Ogre
+str_NpcEnemy_Gob=Gobelin
+str_NpcEnemy_Pha=Fantome
+str_NpcEnemy_Rli=Roi limace
+str_NpcEnemy_Rat=Rat
+str_NpcEnemy_Sli=Slime
+str_NpcEnemy_Slz=Soldat zombie
+str_NpcEnemy_Vam=Vampire
+str_NpcEnemy_Spi=Araignee geante
+str_NpcEnemy_Wor=Ver des sables
+str_NpcEnemy_Drk=Chevalier sombre
+str_NpcEnemy_Moc=Pieuvre mecanique
+str_NpcEnemy_DrM=Mage sombre
+str_NpcEnemy_Mim=Mimic
+
+// ----------------------- ENEMIES WEAPONS :
+
+str_Weapon_BoneHammer=Marteau en os
+str_Weapon_BrokenMass=Massue brisee
+str_Weapon_RustedKnife=Couteau rouille
+str_Weapon_SpectralGriffe=Griffe spectrale
+str_Weapon_GigaSword=Epee gigantesque
+str_Weapon_Griffe=Griffe
+str_Weapon_AcidSpit=Crachat acide
+str_Weapon_RustedSword=Epee rouillee
+str_Weapon_BloodyFangs=Crocs ensenglantes
+str_Weapon_PoisonBite=Morsure venimeuse
+str_Weapon_SandSyphon=Siphon de sable
+str_Weapon_DarkSwordEpee sombre
+str_Weapon_HighPressureJet=Jet haute pression
+str_Weapon_SorcererStick=Baton de sorcier
+str_Weapon_DimensionalBite=Morsure dimensionnelle
+
+// ----------------------------------------------------------------------------------------------------------- LEVEL :
+
+str_Level_Desc1=Niveau #
+str_Level_Desc2=vous appercevez
+
+str_Level_Scenery0=du Desert
+str_Level_Scenery1=de Montagne
+str_Level_Scenery2=de Foret
+str_Level_Scenery3=du Marais
+str_Level_Scenery4=du Village
+str_Level_Scenery5=de la Mer
+str_Level_Scenery6=des Plaines
+str_Level_Scenery7=de Ville
+
+str_Level_Path0=Route
+str_Level_Path1=Chemin
+str_Level_Path2=Impasse
+str_Level_Path3=Grande place
+str_Level_Path4=Place du Marche
+str_Level_Path5=Souterrain
+str_Level_Path6=Maison
+str_Level_Path7=Chalet
+str_Level_Path8=Bifurcation
+str_Level_Path9=Cimetiere
+str_Level_Path10=Grange
+
+str_Level_Decor0=un Panneau d'affichage
+str_Level_Decor1=une Cloture
+str_Level_Decor2=un Pont en bois
+str_Level_Decor3=un Pont en pierre
+str_Level_Decor4=une Fortification
+str_Level_Decor5=un Muret
+str_Level_Decor6=une Decharge
+str_Level_Decor7=un Champ
+str_Level_Decor8=une Foule
+str_Level_Decor9=une Ruine
+str_Level_Decor10=une Colline
+str_Level_Decor11=un Ravin
+str_Level_Decor12=une Fleur
+
+// ----------------------------------------------------------------------------------------------------------- INVENTORY :
+// -------------- ITEMS :
+str_Invent_Item_1=Potion HP
+str_Invent_Item_Desc_1=Regenere une partie variable des HP
+str_Invent_Item_2=Potion MP
+str_Invent_Item_Desc_2=Regenere une partie variable des MP
+str_Invent_Item_3=Death potion
+str_Invent_Item_Desc_3=Tue le personnage
+str_Invent_Item_4=Level UP
+str_Invent_Item_Desc_4=Donne un niveau de plus"
+
+// -------------- WEAPONS :
+str_Invent_Weapon_1=Cheat Sword
+str_Invent_Weapon_Desc_1=Atk : 9999
+str_Invent_Weapon_2=Wooden Sword
+str_Invent_Weapon_Desc_2=Atk : 1
+str_Invent_Weapon_3=Epee legere
+str_Invent_Weapon_Desc_3=Atk : 24
+str_Invent_Weapon_4=Dark Aura Sword
+str_Invent_Weapon_Desc_4=Atk : 250"
+
+str_Invent_Entry1=$$$$$          :
+str_Invent_Entry2=Potions HP     :
+str_Invent_Entry3=Potions MP     :
+str_Invent_Entry4=Death Potions  :
+str_Invent_Entry5=Level Up Items :
+
+
+// ----------------------------------------------------------------------------------------------------------- USER INTERFACE :
+// -------------- START SCREEN :
+str_StartScreen_Entry1=>> INITIATING RETRO-SYNTHETIC INTERFACE <<
+str_StartScreen_Entry2=>>> PLEASE STANDBY <<<
+str_StartScreen_Entry3=>>> CONNECTION NEURAL-STACK: [X]
+str_StartScreen_Entry4=>>> UPLOADING  MINDPRINT...  [||||||||] 100%
+str_StartScreen_Entry5=>>> Set:/|_World_Imagination && Start/$_'Grinding
+
+// -------------- CREDITS :
+str_Credits_Title=CREDITS
+str_Credits_Entry1=Developpement
+str_Credits_Entry2=Testers
+str_Credits_EndLine=THANK YOU FOR PLAYING THIS GAME !!
+
+// -------------- SETTINGS :
+str_Setting_Title=SETTINGS
+str_Setting_LangSelector=Changer la langue - FR (F) / EN (E)
+str_Setting_SlctFr=Langue francaise selectionnee.
+str_Setting_SlctEn=English language selected.
+str_Setting_AudioSlct=Activer le son
+str_Setting_AudioOn=Sons actives.
+str_Setting_AudioOff=Sons desactives.
+
+// -------------- CHARACTER CREATOR :
+str_CharCreate_Title=Character creation menu
+str_CharCreate_Entry1=Character name :
+str_CharCreate_Entry2=Level        :
+str_CharCreate_Entry3=ID           :
+
+// -------------- SHOP MENU :
+str_Shop_Title=Shop Menu
+
+str_Shop_Entry1=- Acheter un objet ? (O) - Continuer (N) -
+str_Shop_Entry2=- Ouvrir l'inventaire (I) - Equiper une arme (E) -  (Argent
+str_Shop_Choice=Votre choix
+
+str_Shop_ChoseItem=Choisissez un objet
+str_Shop_ChoseErr=Choix invalide.
+str_Shop_Chosed=Vous avez choisi
+str_Shop_SlctQty=Entrez une quantité
+str_Shop_SlctQtyErr=Quantité invalide. Veuillez entrer un nombre entier **positif**.
+str_Shop_MoneyNotEnough=Fonds insuffisants ! Total requis
+str_Shop_ItemBrought1=Achat effectué
+str_Shop_ItemBrought2=pour
+str_Shop_NoMoreItemType=Vous ne pouvez pas acheter un autre
+str_Shop_AddToInventory=ajoute à l'inventaire et equipe.
+
+// -------------- WEAPONS MENU :
+str_WpMenu_Title=Armes
+str_WpMenu_SlctWp=Choisissez une arme à equiper
+str_WpMenu_WpEquip=Vous avez equipe
+str_WpMenu_Atk=ATK
+str_WpMenu_WpErr=Arme non trouvee.
