@@ -211,6 +211,8 @@ void UserInterface::DisplayShopMenu(Personnage &player)
     int itemQty;
     int calcTotalPrice;
 
+    // --------------------------******************************** Probleme avec le shop menu, les objets dans l'inventaire d'armes disparaissent lorsque le menu est affiché une seconde fois ****************
+
     // calculer la longueur total de la string pour l'adapter a la longueur du menu, puis calculer le nombre de '-' qui peuvent être entrés et ensuite les partager a gauche et droite aléatoirement.
     while (tolower(userInput2) != 'n') {
         cout << "\n_________________________________________________________" << endl;
@@ -327,7 +329,7 @@ case 'i':
             {
         player.SubstractPlayerMoney(calcTotalPrice);
         cout << "\n_________________________________________________________" << endl;
-        cout << LocalizationManager::Instance().Get("str_Shop_ItemBrought1") << " : " << itemQty << " x " << item.name << " " << LocalizationManager::Instance().Get("str_Shop_ItemBrought2") << " " << calcTotalPrice << "$" << endl;
+        cout << LocalizationManager::Instance().Get("str_Shop_ItemBrought1") << " : " << itemQty << " x " << LocalizationManager::Instance().Get(item.name) << " " << LocalizationManager::Instance().Get("str_Shop_ItemBrought2") << " " << calcTotalPrice << "$" << endl;
         cout << "_________________________________________________________" << endl;
             }
         }
@@ -345,8 +347,8 @@ case 'i':
     }
 }
 
-bool UserInterface::ArmeExiste(const std::string& nom) const {
-    for (const auto& arme : m_possessedWeapons) {
+bool UserInterface::ArmeExiste(const std::string& nom, Personnage &player) const {
+    for (const auto& arme : player.GetPossessedWeapons()) {
         if (arme.second.first == nom)
             return true;
     }
@@ -354,7 +356,7 @@ bool UserInterface::ArmeExiste(const std::string& nom) const {
 }
 
 void UserInterface::AjouterArme(const std::string& nom, int atk, Personnage &player, bool drawText) {
-    if (ArmeExiste(nom)) {
+    if (ArmeExiste(nom, player)) {
         if(drawText){
         cout << "\n_________________________________________________________" << endl;
                 std::cout << LocalizationManager::Instance().Get("str_Shop_NoMoreItemType") << " " << nom << " !" << endl;
@@ -364,8 +366,11 @@ void UserInterface::AjouterArme(const std::string& nom, int atk, Personnage &pla
         return;
     }
 
-    int nextId = m_possessedWeapons.size() + 1;
-    m_possessedWeapons.push_back({nextId, {nom, atk}});
+    //int nextId = m_possessedWeapons.size() + 1;
+    int nextId = player.GetPossessedWeapons().size() + 1;
+    //m_possessedWeapons.push_back({nextId, {nom, atk}});
+    //player.SetPossessedWeapons().push_back({nextId, {nom, atk}});
+    player.AddPossessedWeapon(nextId, nom, atk);
     player.changerArme(nom, atk);
     player.TotalWeaponBrought();
     if(drawText){
@@ -375,13 +380,14 @@ void UserInterface::AjouterArme(const std::string& nom, int atk, Personnage &pla
     }
 }
 
-
+// -------------------------------------------------------------------------------------------------------------------- EQUIPEMENT MENU :
 void UserInterface::EquipementMenuDraw(Personnage &player)
 {
         cout << "\n_________________________________________________________" << endl;
         cout << "------------------------ " << LocalizationManager::Instance().Get("str_WpMenu_Title") << " --------------------------" << endl;
         cout << "_________________________________________________________\n" << endl;
-    for (const auto& weapon : m_possessedWeapons)
+    //for (const auto& weapon : m_possessedWeapons)
+            for (const auto& weapon : player.GetPossessedWeapons())
     {
         cout << weapon.first << ". " << weapon.second.first << " (" << weapon.second.second << " " << LocalizationManager::Instance().Get("str_WpMenu_Atk") << ")\n" << endl;
     }
@@ -393,7 +399,8 @@ void UserInterface::EquipementMenuDraw(Personnage &player)
 
     bool found = false;
 
-    for (const auto& weapon : m_possessedWeapons)
+    //for (const auto& weapon : m_possessedWeapons)
+    for (const auto& weapon : player.GetPossessedWeapons())
     {
         if (weapon.first == userInput)
         {

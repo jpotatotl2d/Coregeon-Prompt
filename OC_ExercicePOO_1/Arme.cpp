@@ -1,5 +1,7 @@
 #include "Arme.hpp"
+#include "Personnage.hpp"
 #include "LocalizationManager.hpp"
+#include <cmath>
 
 using namespace std;
 
@@ -34,5 +36,17 @@ void Arme::afficher(int statsLevel)
 
 int Arme::getDegats() const
 {
+    return m_degats;
+}
+
+int Arme::setDegats(Personnage &player)
+{
+    //int savedDegats = m_degats;
+    //m_degats = degatsNew;
+
+    double upgradedStat = m_degats * (1 + player.GetWpbonusRatio() * log(player.GetActualPlayerLevel() + 1));
+    m_degats = upgradedStat;
+
+    //m_degats = savedDegats;
     return m_degats;
 }

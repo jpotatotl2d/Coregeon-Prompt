@@ -4,6 +4,8 @@
 #include <iostream>
 #include <string>
 
+class Personnage;
+
 class Arme
 {
     public:
@@ -15,6 +17,7 @@ class Arme
     int getDegats() const;
     void SetName (std::string WpName);
     void afficherPlayer(int statsLevel);
+    int setDegats(Personnage &player);
 
     private:
 

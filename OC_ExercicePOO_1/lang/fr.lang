@@ -81,7 +81,7 @@ str_Char_StatsEnd_MagAtks=Atk magiques      :
 str_Char_StatsEnd_MissAtks=Atk manquees      :
 str_Char_StatsEnd_TotalMoney=Argent total      :
 str_Char_StatsEnd_TotalBrgt1Wp=Weapons brought   :
-str_Char_StatsEnd_VistdLvls=:Niveaux visites   :
+str_Char_StatsEnd_VistdLvls=Niveaux visites   :
 
 // ----------------------------------------------------------------------------------------------------------- NPCS ENEMIES :
 
@@ -114,7 +114,7 @@ str_Weapon_RustedSword=Epee rouillee
 str_Weapon_BloodyFangs=Crocs ensenglantes
 str_Weapon_PoisonBite=Morsure venimeuse
 str_Weapon_SandSyphon=Siphon de sable
-str_Weapon_DarkSwordEpee sombre
+str_Weapon_DarkSword=Epee sombre
 str_Weapon_HighPressureJet=Jet haute pression
 str_Weapon_SorcererStick=Baton de sorcier
 str_Weapon_DimensionalBite=Morsure dimensionnelle
@@ -178,7 +178,7 @@ str_Invent_Weapon_Desc_2=Atk : 1
 str_Invent_Weapon_3=Epee legere
 str_Invent_Weapon_Desc_3=Atk : 24
 str_Invent_Weapon_4=Dark Aura Sword
-str_Invent_Weapon_Desc_4=Atk : 250"
+str_Invent_Weapon_Desc_4=Atk : 250
 
 str_Invent_Entry1=$$$$$          :
 str_Invent_Entry2=Potions HP     :

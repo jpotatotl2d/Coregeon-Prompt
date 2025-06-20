@@ -44,11 +44,11 @@ str_Char_DmgTo=damage to
 str_Char_DmgManaTo=mana damage to
 
 str_Char_Status_Name=Name   :
-str_Char_Status_Level=Level :
-str_Char_Status_Health=HP    :
-str_Char_Status_Mana=MP    :
+str_Char_Status_Level=Level  :
+str_Char_Status_Health=HP     :
+str_Char_Status_Mana=MP     :
 str_Char_Status_Player_Exp=EXP    :
-str_Char_Status_Player_Money=Money :
+str_Char_Status_Player_Money=Money  :
 
 str_Char_Status_Npc_Exp=EXP+   :
 str_Char_Status_Npc_Money=Money+ :
@@ -71,17 +71,17 @@ str_Char_HealthCritP=is in critical condition and uses an HP potion!
 str_Char_ManaCritP=has no mana left and drinks a magic potion!
 str_Char_MissAtk=misses their attack!
 
-str_Char_StatsEnd_DefeatedNpc=Enemies defeated     :
-str_Char_StatsEnd_LevelsEarned=Levels gained       :
+str_Char_StatsEnd_DefeatedNpc=Enemies defeated         :
+str_Char_StatsEnd_LevelsEarned=Levels gained            :
 str_Char_StatsEnd_TotalXp=Total XP pts             :
-str_Char_StatsEnd_TotalUsedHp=HP Potions used      :
-str_Char_StatsEnd_TotalUsedMp=MP Potions used      :
+str_Char_StatsEnd_TotalUsedHp=HP Potions used          :
+str_Char_StatsEnd_TotalUsedMp=MP Potions used          :
 str_Char_StatsEnd_PhyAtks=Physical attacks         :
 str_Char_StatsEnd_MagAtks=Magic attacks            :
-str_Char_StatsEnd_MissAtks=Missed attacks          :
-str_Char_StatsEnd_TotalMoney=Total money           :
-str_Char_StatsEnd_TotalBrgt1Wp=Weapons acquired    :
-str_Char_StatsEnd_VistdLvls=Levels visited         :
+str_Char_StatsEnd_MissAtks=Missed attacks           :
+str_Char_StatsEnd_TotalMoney=Total money              :
+str_Char_StatsEnd_TotalBrgt1Wp=Weapons acquired         :
+str_Char_StatsEnd_VistdLvls=Levels visited           :
 
 // ----------------------------------------------------------------------------------------------------------- NPCS ENEMIES :
 

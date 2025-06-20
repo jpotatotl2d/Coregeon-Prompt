@@ -40,6 +40,13 @@ Personnage::Personnage(int niveau, int vieMax, int manaMax, string nomArme, int 
     m_giveMoney = giveMoney;
     //m_arme.SetName(nomArme);
     //m_nom = LocalizationManager::Instance().Get(nomPersonnage);
+    //int upgradeStatsLevelUp = static_cast<int>(((m_arme.getDegats() * m_actualPlayerLevel) / 100.0f) * 10.0f);
+    //m_statsLevelUp = upgradeStatsLevelUp;
+    //m_arme.setDegats(upgradeStatsLevelUp);
+    AddPossessedWeapon(1, LocalizationManager::Instance().Get("str_Invent_Weapon_3"), 24);
+    UpgradeStatsBonusRatio(m_arme.getDegats(), m_WpBonusRatio, m_actualPlayerLevel);
+    m_arme.setDegats(*this);
+    //m_playerPossessedWeapons.push_back({1, {"str_Invent_Weapon_3", 24}});
 
 }
 
@@ -83,6 +90,16 @@ int Personnage::getGiveMoney() const
      return m_totalPlayerMoney;
  }
 
+ double Personnage::GetWpbonusRatio()
+ {
+     return m_WpBonusRatio;
+ }
+
+ int Personnage::GetActualPlayerLevel()
+ {
+     return m_actualPlayerLevel;
+ }
+
  void Personnage::SubstractPlayerMoney(int receivedMoney)
  {
      m_totalPlayerMoney -= receivedMoney;
@@ -102,6 +119,24 @@ int Personnage::getGiveMoney() const
  void Personnage::TotalWeaponBrought()
  {
      m_totalWeaponsBrougth += 1;
+ }
+
+void Personnage::AddPossessedWeapon(int id, const std::string& nom, int atk)
+{
+    m_playerPossessedWeapons.push_back({id, {nom, atk}});
+}
+
+
+void Personnage::UpdateWpDamage()
+{
+    UpgradeStatsBonusRatio(m_arme.getDegats(), m_WpBonusRatio, m_actualPlayerLevel);
+    m_arme.setDegats(*this);
+
+}
+
+ std::vector<std::pair<int, std::pair<std::string, int>>> Personnage::GetPossessedWeapons()
+ {
+     return m_playerPossessedWeapons;
  }
 
 // -------------------------------------------------------------------- Check if the character is alive :
@@ -149,24 +184,47 @@ void Personnage::recevoirDegats(int nbDegats)
     }
 }
 
+double Personnage::UpgradeStatsBonusRatio (int StatStatistic, double bonusRatio, int ActualPlayerLevel)
+{
+    //double upgradeDmg = (((StatStatistic / 100.0) * bonusRatio) * ActualPlayerLevel);
+    double upgradedStat = StatStatistic * (1 + bonusRatio * log(ActualPlayerLevel + 1));
+
+
+    // cout << "*/*/*/*/*/*/ Stat Upgrade is now : " << upgradedStat << endl;
+
+    return upgradedStat;
+}
+
+
 // -------------------------------------------------------------------- Calculate the character's Experience Points :
 void Personnage::LevelUp(int levelUpParam, int levelQty, string nomPersonnage)
 {
     m_totalLevelsEarned += levelQty;
 
+
+
+    // -------------------------------------------------- Issue with m_arme.setdegats() when changing weapon, need to use the UpdateStatsBonusRatio() when creating the weapon object.
     // Level up silently using a loop.
     if(levelUpParam == 1)
     {
         for(int i = 0; i < levelQty - 1; ++i)
         {
             m_actualPlayerLevel += 1;
-            m_statsLevelUp = (((m_maxHealth * m_actualPlayerLevel) / 100) * 1.5);
+            //m_statsLevelUp = upgradeStatsLevelUp;
             //int niveauPersonnage = m_actualPlayerLevel;
-            m_maxHealth += (((m_maxHealth * m_actualPlayerLevel) / 100) * 1.5);
-            m_maxMana += (((m_maxMana * m_actualPlayerLevel) / 100) * 1.5);
+            m_maxHealth = UpgradeStatsBonusRatio (m_maxHealth, m_HpBonusRatio, m_actualPlayerLevel);
+            // upgradeHealth;
+            m_maxMana = UpgradeStatsBonusRatio (m_maxMana, m_MpBonusRatio, m_actualPlayerLevel);
+            // upgradeMana;
             m_vie = m_maxHealth;
             m_mana = m_maxMana;
-            m_nextLevelExp += (m_nextLevelExp / 100) * 15;
+            m_nextLevelExp = UpgradeStatsBonusRatio (m_nextLevelExp, m_NextLevelBonusRatio, m_actualPlayerLevel);
+
+            m_giveExp = UpgradeStatsBonusRatio (m_giveExp, m_GiveExpBonusRatio, m_actualPlayerLevel);
+            m_giveMoney = UpgradeStatsBonusRatio (m_giveMoney, m_GiveMoneyBonusRatio, m_actualPlayerLevel);
+            //m_arme.setDegats(m_statsLevelUp);
+            //m_arme.setDegats(UpgradeStatsBonusRatio(m_arme.getDegats(), m_WpBonusRatio, m_actualPlayerLevel));
+            m_arme.setDegats(*this);
         }
 
     }
@@ -176,13 +234,21 @@ void Personnage::LevelUp(int levelUpParam, int levelQty, string nomPersonnage)
         for(int i = 0; i < levelQty; ++i)
         {
             m_actualPlayerLevel += 1;
-            m_statsLevelUp = (((m_maxHealth * m_actualPlayerLevel) / 100) * 1.5);
-            //int niveauPersonnage = m_actualPlayerLevel;
-            m_maxHealth += (((m_maxHealth * m_actualPlayerLevel) / 100) * 1.5);
-            m_maxMana += (((m_maxMana * m_actualPlayerLevel) / 100) * 1.5);
+            //m_statsLevelUp = m_statsLevelUp;
+
+            m_maxHealth = UpgradeStatsBonusRatio (m_maxHealth, m_HpBonusRatio, m_actualPlayerLevel);
+            // upgradeHealth;
+            m_maxMana = UpgradeStatsBonusRatio (m_maxMana, m_MpBonusRatio, m_actualPlayerLevel);
+            // upgradeMana;
             m_vie = m_maxHealth;
             m_mana = m_maxMana;
-            m_nextLevelExp += (m_nextLevelExp / 100) * 15;
+            m_nextLevelExp = UpgradeStatsBonusRatio (m_nextLevelExp, m_NextLevelBonusRatio, m_actualPlayerLevel);
+
+            m_giveExp = UpgradeStatsBonusRatio (m_giveExp, m_GiveExpBonusRatio, m_actualPlayerLevel);
+            m_giveMoney = UpgradeStatsBonusRatio (m_giveMoney, m_GiveMoneyBonusRatio, m_actualPlayerLevel);
+            //m_arme.setDegats(m_statsLevelUp);
+            //m_arme.setDegats(UpgradeStatsBonusRatio(m_arme.getDegats(), m_WpBonusRatio, m_actualPlayerLevel));
+            m_arme.setDegats(*this);
         }
             cout << "##" << nomPersonnage << " " << LocalizationManager::Instance().Get("str_Char_Earn") << " " << levelQty << " " << LocalizationManager::Instance().Get("str_Char_EarnLevLvls") << " : " << LocalizationManager::Instance().Get("str_Char_EarnLevel") << " = " << m_actualPlayerLevel << " HP = " << m_maxHealth << " MP = " << m_maxMana << endl;
     }
@@ -191,13 +257,22 @@ void Personnage::LevelUp(int levelUpParam, int levelQty, string nomPersonnage)
     {
 
             m_actualPlayerLevel += 1;
-            m_statsLevelUp = (((m_maxHealth * m_actualPlayerLevel) / 100) * 1.5);
+            //m_statsLevelUp = upgradeStatsLevelUp;
             //int niveauPersonnage = m_actualPlayerLevel;
-            m_maxHealth += (((m_maxHealth * m_actualPlayerLevel) / 100) * 1.5);
-            m_maxMana += (((m_maxMana * m_actualPlayerLevel) / 100) * 1.5);
+            m_maxHealth = UpgradeStatsBonusRatio (m_maxHealth, m_HpBonusRatio, m_actualPlayerLevel);
+            // upgradeHealth;
+            m_maxMana = UpgradeStatsBonusRatio (m_maxMana, m_MpBonusRatio, m_actualPlayerLevel);
+            // upgradeMana;
             m_vie = m_maxHealth;
             m_mana = m_maxMana;
-            m_nextLevelExp += (m_nextLevelExp / 100) * 15;
+            m_nextLevelExp = UpgradeStatsBonusRatio (m_nextLevelExp, m_NextLevelBonusRatio, m_actualPlayerLevel);
+
+            m_giveExp = UpgradeStatsBonusRatio (m_giveExp, m_GiveExpBonusRatio, m_actualPlayerLevel);
+            m_giveMoney = UpgradeStatsBonusRatio (m_giveMoney, m_GiveMoneyBonusRatio, m_actualPlayerLevel);
+            //m_arme.setDegats(m_statsLevelUp);
+            //m_arme.setDegats(UpgradeStatsBonusRatio(m_arme.getDegats(), m_WpBonusRatio, m_actualPlayerLevel));
+            m_arme.setDegats(*this);
+
             cout << "## " << nomPersonnage << " " << LocalizationManager::Instance().Get("str_Char_EarnOne") << " " << LocalizationManager::Instance().Get("str_Char_EarnLevel") << " = " << m_actualPlayerLevel << " HP = " << m_maxHealth << " MP = " << m_maxMana << endl;
     }
 
@@ -274,6 +349,7 @@ void Personnage::attaquerMagie(Personnage &cible)
 void Personnage::changerArme(string nomNouvelleArme, int degatsNouvelleArme)
 {
     m_arme.changer(nomNouvelleArme, degatsNouvelleArme);
+    m_arme.setDegats(*this);
 }
 
 

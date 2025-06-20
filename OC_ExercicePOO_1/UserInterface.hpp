@@ -33,7 +33,7 @@ public:
 
     void DisplayShopMenu(Personnage &player);
     void AjouterArme(const std::string& nom, int atk, Personnage &player, bool drawText);
-    bool ArmeExiste(const std::string& nom) const;
+    bool ArmeExiste(const std::string& nom, Personnage &player) const;
 
     std::string GetNewLang();
 
@@ -41,7 +41,7 @@ private:
 
     bool m_activerAudio = true;
     bool m_startScreenWasDrawn = false;
-    std::vector<std::pair<int, std::pair<std::string, int>>> m_possessedWeapons = {{1, {"Epee legere", 24}}};
+    std::vector<std::pair<int, std::pair<std::string, int>>> m_possessedWeapons = {{1, {"str_Invent_Weapon_3", 24}}};
     std::string m_SelectedLanguage = "fr";
 
 };

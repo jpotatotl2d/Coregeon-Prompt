@@ -33,6 +33,9 @@ char keyYes;
 char keyNo;
 string gameLanguage = "fr";
 
+// Define the number of levels that the enemies gain when defeating the Boss level:
+int npcLevelUp = 5;
+
         void setupLocalization()
         {
             LocalizationManager::Instance().Load(gameLanguage);
@@ -49,27 +52,25 @@ string gameLanguage = "fr";
         // Pre-declaration of function:
 int startGame();
 
-
-// issue when defeating enemies, the text show the localized variable name instead of the character name
     map<string, Personnage> enemies = {
-    {"str_NpcEnemy_Sql", Personnage(2, 150, 400, "str_Weapon_BoneHammer", 2, "SQL", 26, 130)},
-    {"str_NpcEnemy_Ogr", Personnage(3, 150, 80, "str_Weapon_BrokenMass", 3, "OGR", 43, 140)},
-    {"str_NpcEnemy_Gob", Personnage(4, 240, 115, "str_Weapon_RustedKnife", 4, "GOB", 53, 150)},
-    {"str_NpcEnemy_Pha", Personnage(4, 200, 320, "str_Weapon_SpectralGriffe", 4, "PHA", 64, 160)},
-    {"str_NpcEnemy_Rli", Personnage(6, 400, 500, "str_Weapon_GigaSword", 7, "RLI", 128, 170)},
-    {"str_NpcEnemy_Rat", Personnage(3, 190, 80, "str_Weapon_Griffe", 9, "RAT", 4, 180)},
-    {"str_NpcEnemy_Sli", Personnage(3, 210, 350, "str_Weapon_AcidSpit", 5, "SLI", 61, 190)},
-    {"str_NpcEnemy_Slz", Personnage(4, 200, 50, "str_Weapon_RustedSword", 4, "SLZ", 78, 200)},
-    {"str_NpcEnemy_Vam", Personnage(4, 300, 600, "str_Weapon_BloodyFangs", 5, "VAM", 123, 210)},
-    {"str_NpcEnemy_Spi", Personnage(4, 190, 220, "str_Weapon_PoisonBite", 6, "SPI", 49, 220)},
-    {"str_NpcEnemy_Wor", Personnage(4, 220, 180, "str_Weapon_SandSyphon", 4, "WOR", 65, 230)},
-    {"str_NpcEnemy_Drk", Personnage(5, 150, 180, "str_Weapon_DarkSwordEpee", 8, "DRK", 152, 259)},
-    {"str_NpcEnemy_Moc", Personnage(5, 150, 180, "str_Weapon_HighPressureJet", 9, "MOC", 254, 312)},
-    {"str_NpcEnemy_DrM", Personnage(5, 220, 450, "str_Weapon_SorcererStick", 5, "DRM", 123, 240)},
-    {"str_NpcEnemy_Mim", Personnage(4, 220, 800, "str_Weapon_DimensionalBite", 1, "MIM", 366, 18594)}
+        // {"Localized var", Personnage(Level, Health, Mana, "Weapon", Damage, "ID", Exp, Money}
+    {"str_NpcEnemy_Sql", Personnage(2, 150, 400, "str_Weapon_BoneHammer", 4, "SQL", 26, 130)},
+    {"str_NpcEnemy_Ogr", Personnage(3, 150, 80, "str_Weapon_BrokenMass", 6, "OGR", 43, 140)},
+    {"str_NpcEnemy_Gob", Personnage(4, 240, 115, "str_Weapon_RustedKnife", 8, "GOB", 53, 150)},
+    {"str_NpcEnemy_Pha", Personnage(4, 200, 320, "str_Weapon_SpectralGriffe", 8, "PHA", 64, 160)},
+    {"str_NpcEnemy_Rli", Personnage(6, 400, 500, "str_Weapon_GigaSword", 14, "RLI", 128, 170)},
+    {"str_NpcEnemy_Rat", Personnage(3, 190, 80, "str_Weapon_Griffe", 18, "RAT", 4, 180)},
+    {"str_NpcEnemy_Sli", Personnage(3, 210, 350, "str_Weapon_AcidSpit", 10, "SLI", 61, 190)},
+    {"str_NpcEnemy_Slz", Personnage(4, 200, 50, "str_Weapon_RustedSword", 8, "SLZ", 78, 200)},
+    {"str_NpcEnemy_Vam", Personnage(4, 300, 600, "str_Weapon_BloodyFangs", 10, "VAM", 123, 210)},
+    {"str_NpcEnemy_Spi", Personnage(4, 190, 220, "str_Weapon_PoisonBite", 12, "SPI", 49, 220)},
+    {"str_NpcEnemy_Wor", Personnage(4, 220, 180, "str_Weapon_SandSyphon", 8, "WOR", 65, 230)},
+    {"str_NpcEnemy_Drk", Personnage(5, 150, 180, "str_Weapon_DarkSword", 16, "DRK", 152, 259)},
+    {"str_NpcEnemy_Moc", Personnage(5, 150, 180, "str_Weapon_HighPressureJet", 18, "MOC", 254, 312)},
+    {"str_NpcEnemy_DrM", Personnage(5, 220, 450, "str_Weapon_SorcererStick", 10, "DRM", 123, 240)},
+    {"str_NpcEnemy_Mim", Personnage(4, 220, 800, "str_Weapon_DimensionalBite", 2, "MIM", 366, 18594)}
 };
 
-// string randomEnemy[] = {"Squelette", "Orc", "Gobelin", "Boss", "Fantome", "Rat", "Slime", "Soldat zombie", "Vampire", "Araignee geante", "Ver des sables", "Mage sombre"};
 
 vector<string> bossNames = {"str_NpcEnemy_Rli", "str_NpcEnemy_Drk", "str_NpcEnemy_Moc"};
 vector<string> enemyNames;
@@ -104,7 +105,7 @@ void mainGameMenu(UserInterface &UI)
     char userInput;
     //setupLocalization(); // Need to set a get in UserInterface to retrieve the modified language and set it to gameLanguage, then update setupLocalization.
 
-    while(menuUserInput != 'n') // if not start new game
+    while(menuUserInput != 'n') // if not 'start new game' input
     {
 
             if(gameLanguage != UI.GetNewLang())
@@ -373,7 +374,7 @@ if (characterName.estVivant()) {
 }
 else {
     cout << "\n****** " << LocalizationManager::Instance().Get("str_Game_GameEnd") << " ******\n" << endl;
-    cout << enemyName << " " << LocalizationManager::Instance().Get("str_Game_FightCharDefeated") << " " << myCharacterName << " !!\n" << endl;
+    cout << LocalizationManager::Instance().Get(enemyName) << " " << LocalizationManager::Instance().Get("str_Game_FightCharDefeated") << " " << myCharacterName << " !!\n" << endl;
     characterName.afficherStatsEnd(characterName, Level.GetTotalLevels());
 
     // ------------------------------------------------------------------------ Display credits and return to Main Menu :
@@ -385,14 +386,14 @@ else {
      // ---------------------------------------------------- Trying to update enemies level, may need a bool to stop the for():
 // Level up automatique des ennemis tous les 5 niveaux
 if (Level.GetTotalLevels() % 5 == 0 && characterName.estVivant()) {
-    int npcLevelUp = 3;
+
     for (auto it = enemies.begin(); it != enemies.end(); ++it)
 {
     std::string name = it->first;
     Personnage& enemy = it->second;
-    enemy.LevelUp(2, npcLevelUp, enemy.GetName());
+    enemy.LevelUp(1, npcLevelUp, enemy.GetName());
 }
-    cout << "++++++ " << LocalizationManager::Instance().Get("str_Game_NpcLevelUpTitle") << " " << npcLevelUp << " " << LocalizationManager::Instance().Get("str_Game_NpcLevelUpLvl") << endl;
+    cout << "\n++++++ " << LocalizationManager::Instance().Get("str_Game_NpcLevelUpTitle") << " " << npcLevelUp << " " << LocalizationManager::Instance().Get("str_Game_NpcLevelUpLvl") << "\n" << endl;
     characterName.afficherStatsEnd(characterName, Level.GetTotalLevels());
 }
 characterName.resetNbrAffichageStatus();

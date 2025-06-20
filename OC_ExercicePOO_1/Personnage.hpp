@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <string>
+#include <vector>
 #include "Arme.hpp"
 #include "Level.hpp"
 
@@ -63,6 +64,16 @@ class Personnage
     int GetNbrAffichageStatus();
 
     void TotalWeaponBrought();
+    std::vector<std::pair<int, std::pair<std::string, int>>> GetPossessedWeapons();
+    void AddPossessedWeapon(int id, const std::string& nom, int atk);
+
+    double UpgradeStatsBonusRatio (int StatStatistic, double bonusRatio, int ActualPlayerLevel);
+
+    double GetWpbonusRatio();
+     int GetActualPlayerLevel();
+     void UpdateWpDamage();
+
+    // ------------------------------------------------------------------ PRIVATE :
 
     private:
 
@@ -101,6 +112,16 @@ class Personnage
 
     long long m_totalPlayerMoney = 9999999999;
     long long m_totalGameMoney = 0;
+    std::vector<std::pair<int, std::pair<std::string, int>>> m_playerPossessedWeapons; // = {{1, {"str_Invent_Weapon_3", 24}}};
+
+    double m_WpBonusRatio = 0.06;
+    double m_HpBonusRatio = 0.04;
+    double m_MpBonusRatio = 0.03;
+    double m_GiveExpBonusRatio = 0.08;
+    double m_GiveMoneyBonusRatio = 0.08;
+    double m_NextLevelBonusRatio = 0.08;
+
+
 
 
 };
